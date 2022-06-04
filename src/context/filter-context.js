@@ -1,10 +1,4 @@
-import {
-	createContext,
-	useContext,
-	useEffect,
-	useReducer,
-	useState,
-} from "react";
+import { createContext, useContext, useReducer } from "react";
 import { filterReducerFunction } from "../reducers/filterReducerFunction";
 
 const FiltersContext = createContext();

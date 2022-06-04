@@ -1,96 +1,19 @@
 import React, { useState } from "react";
 import { Filters } from "../../components/Filters";
-import { useProducts } from "../../context";
-import { useFilters } from "../../context/filter-context";
+import { useProducts, useFilters } from "../../context";
+import { getSortedFilteredData } from "../../utils/getSortedFilteredData";
 
 const ProductListing = () => {
 	const { productsLoading, products } = useProducts();
 	const { sortBy, sizeFilters, brandFilters, idealForFilters } = useFilters();
 
-	const getFilteredProductsBySize = (sizeFilters, products) => {
-		if (Object.values(sizeFilters).every((size) => !size)) return products;
-		let filteredProducts = [];
-		for (const size in sizeFilters) {
-			const sizeSelected = sizeFilters[size];
-			const productssWithSize = products.filter((product) =>
-				sizeSelected &&
-				!filteredProducts.find(
-					(filteredProduct) => filteredProduct._id === product._id
-				) &&
-				product.size === size
-					? true
-					: false
-			);
-			filteredProducts = [...filteredProducts, ...productssWithSize];
-		}
-		return filteredProducts;
-	};
-
-	const getFilteredProductsByBrand = (brandFilters, products) => {
-		if (Object.values(brandFilters).every((brand) => !brand))
-			return products;
-		let filteredProducts = [];
-		for (const brand in brandFilters) {
-			const brandSelected = brandFilters[brand];
-			const productssWithBrand = products.filter((product) =>
-				brandSelected &&
-				!filteredProducts.find(
-					(filteredProduct) => filteredProduct._id === product._id
-				) &&
-				product.brand === brand
-					? true
-					: false
-			);
-			filteredProducts = [...filteredProducts, ...productssWithBrand];
-		}
-		return filteredProducts;
-	};
-
-	const getFilteredProductsByIdealFor = (idealForFilters, products) => {
-		if (Object.values(idealForFilters).every((idealFor) => !idealFor))
-			return products;
-		let filteredProducts = [];
-		for (const idealFor in idealForFilters) {
-			const idealForSelected = idealForFilters[idealFor];
-			const productsWithIdealFor = products.filter((product) =>
-				idealForSelected &&
-				!filteredProducts.find(
-					(filteredProduct) => filteredProduct._id === product._id
-				) &&
-				product.idealFor === idealFor
-					? true
-					: false
-			);
-			filteredProducts = [...filteredProducts, ...productsWithIdealFor];
-		}
-		return filteredProducts;
-	};
-
-	const getSortedProducts = (sortBy, products) => {
-		if (!sortBy) return products;
-		return sortBy === "LOW_TO_HIGH"
-			? [...products].sort(
-					(productA, productB) => productA.price - productB.price
-			  )
-			: [...products].sort(
-					(productA, productB) => productB.price - productA.price
-			  );
-	};
-
-	const productsFilteredByIdealFor = getFilteredProductsByIdealFor(
+	const sortedProducts = getSortedFilteredData(
+		products,
 		idealForFilters,
-		products
-	);
-
-	const productsFilteredByBrand = getFilteredProductsByBrand(
 		brandFilters,
-		productsFilteredByIdealFor
-	);
-	const productsFilteredBySize = getFilteredProductsBySize(
 		sizeFilters,
-		productsFilteredByBrand
+		sortBy
 	);
-	const sortedProducts = getSortedProducts(sortBy, productsFilteredBySize);
 
 	const [showFilters, setShowFilters] = useState(false);
 
