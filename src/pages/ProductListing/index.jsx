@@ -66,6 +66,10 @@ const ProductListing = () => {
 						{sortedProducts.length ? (
 							<div className="products-wrapper">
 								<h3>Products</h3>
+								<p>
+									{sortedProducts?.length} of{" "}
+									{products?.length} products
+								</p>
 								<div className="product-mapping">
 									{productsMapping}
 								</div>
