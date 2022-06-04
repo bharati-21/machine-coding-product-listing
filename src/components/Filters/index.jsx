@@ -47,12 +47,11 @@ const Filters = () => {
 		setFiltersState({ action: { type: "CLEAR_FILTERS" } });
 
 	return (
-		<div>
+		<div class="filters-container">
 			<div className="price-sorting-container">
 				<h6>Sort By Price</h6>
 				<div className="sorting-options">
 					<label>
-						Low to High
 						<input
 							type="radio"
 							name="sort-price"
@@ -61,9 +60,9 @@ const Filters = () => {
 							checked={sortBy === "LOW_TO_HIGH"}
 							onChange={changeSortOptions}
 						/>
+						Low to High
 					</label>
 					<label>
-						High to Low
 						<input
 							type="radio"
 							name="sort-price"
@@ -72,6 +71,7 @@ const Filters = () => {
 							checked={sortBy === "HIGH_TO_LOW"}
 							onChange={changeSortOptions}
 						/>
+						High to Low
 					</label>
 				</div>
 			</div>
@@ -79,7 +79,6 @@ const Filters = () => {
 				<h6>Filter By Size</h6>
 				<div className="filter-options">
 					<label>
-						XS
 						<input
 							type="checkbox"
 							name="filter-size"
@@ -88,9 +87,9 @@ const Filters = () => {
 							checked={sizeFilters["XS"]}
 							onChange={changeSizeFilterOptions}
 						/>
+						XS
 					</label>
 					<label>
-						S
 						<input
 							type="checkbox"
 							name="filter-size"
@@ -99,9 +98,9 @@ const Filters = () => {
 							checked={sizeFilters["S"]}
 							onChange={changeSizeFilterOptions}
 						/>
+						S
 					</label>
 					<label>
-						M
 						<input
 							type="checkbox"
 							name="filter-size"
@@ -110,9 +109,9 @@ const Filters = () => {
 							checked={sizeFilters["M"]}
 							onChange={changeSizeFilterOptions}
 						/>
+						M
 					</label>
 					<label>
-						L
 						<input
 							type="checkbox"
 							name="filter-size"
@@ -121,9 +120,9 @@ const Filters = () => {
 							checked={sizeFilters["L"]}
 							onChange={changeSizeFilterOptions}
 						/>
+						L
 					</label>
 					<label>
-						XL
 						<input
 							type="checkbox"
 							name="filter-size"
@@ -132,6 +131,7 @@ const Filters = () => {
 							checked={sizeFilters["XL"]}
 							onChange={changeSizeFilterOptions}
 						/>
+						XL
 					</label>
 				</div>
 			</div>
@@ -139,7 +139,6 @@ const Filters = () => {
 				<h6>Filter By Brand</h6>
 				<div className="filter-options">
 					<label>
-						LEVI'S
 						<input
 							type="checkbox"
 							name="filter-brand"
@@ -148,9 +147,9 @@ const Filters = () => {
 							checked={brandFilters["LEVI'S"]}
 							onChange={changeBrandFilters}
 						/>
+						LEVI'S
 					</label>
 					<label>
-						ONLY
 						<input
 							type="checkbox"
 							name="filter-brand"
@@ -159,9 +158,9 @@ const Filters = () => {
 							checked={brandFilters["ONLY"]}
 							onChange={changeBrandFilters}
 						/>
+						ONLY
 					</label>
 					<label>
-						VERO MODA
 						<input
 							type="checkbox"
 							name="filter-brand"
@@ -170,9 +169,9 @@ const Filters = () => {
 							checked={brandFilters["VERO MODA"]}
 							onChange={changeBrandFilters}
 						/>
+						VERO MODA
 					</label>
 					<label>
-						ADIDAS
 						<input
 							type="checkbox"
 							name="filter-brand"
@@ -181,9 +180,9 @@ const Filters = () => {
 							checked={brandFilters["ADIDAS"]}
 							onChange={changeBrandFilters}
 						/>
+						ADIDAS
 					</label>
 					<label>
-						Aurelia
 						<input
 							type="checkbox"
 							name="filter-brand"
@@ -192,6 +191,7 @@ const Filters = () => {
 							checked={brandFilters["Aurelia"]}
 							onChange={changeBrandFilters}
 						/>
+						Aurelia
 					</label>
 				</div>
 			</div>
@@ -199,7 +199,6 @@ const Filters = () => {
 				<h6>Filter By Ideal For</h6>
 				<div className="filter-options">
 					<label>
-						Men
 						<input
 							type="checkbox"
 							name="filter-ideal-for"
@@ -208,9 +207,9 @@ const Filters = () => {
 							checked={idealForFilters["Men"]}
 							onChange={changeIdealForFilters}
 						/>
+						Men
 					</label>
 					<label>
-						Women
 						<input
 							type="checkbox"
 							name="filter-ideal-for"
@@ -219,9 +218,9 @@ const Filters = () => {
 							checked={idealForFilters["Women"]}
 							onChange={changeIdealForFilters}
 						/>
+						Women
 					</label>
 					<label>
-						Kids
 						<input
 							type="checkbox"
 							name="filter-ideal-for"
@@ -230,6 +229,7 @@ const Filters = () => {
 							checked={idealForFilters["Kids"]}
 							onChange={changeIdealForFilters}
 						/>
+						Kids
 					</label>
 				</div>
 			</div>
