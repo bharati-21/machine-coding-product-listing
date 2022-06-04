@@ -52,6 +52,7 @@ section {
 }
 
 .product-mapping {
+    width: 100%;
     border: 1px solid #ccc;
     display: grid;
     gap: 4rem 2rem;
@@ -89,6 +90,10 @@ section {
     text-align: center;
 }
 
+.products-wrapper {
+    width: 100%;
+}
+
 .card-main {
     display: flex;
     flex-direction: column;
@@ -109,6 +114,7 @@ section {
 
 .filter-options {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -126,6 +132,60 @@ label {
     justify-content: flex-start;
     align-items: start;
     margin-bottom: 1rem;
+}
+.products-grid {
+    display: grid;
+    width: 100%;
+    place-items: start;
+    grid-template-columns: 250px 1fr;
+}
+
+.btn-show-filters {
+    display: none;
+}
+
+.filters-wrapper {
+    position: sticky;
+    top: 20px;
+}
+
+.filters-container {
+    display: flex;
+}
+
+
+@media screen and (max-width: 680px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-wrapper {
+        top: unset;
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: start;
+        background-color: #ccc;
+    }
+
+    .btn-show-filters {
+        display: block;
+    }
+
+    .filters-container.hide {
+        display: none;
+    }
+
+    .filters-container.show {
+        display: flex;
+    }
+    
+
 }
 
 @media screen and (max-width: 480px) {

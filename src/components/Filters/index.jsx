@@ -1,7 +1,7 @@
 import React from "react";
 import { useFilters } from "../../context/filter-context";
 
-const Filters = () => {
+const Filters = ({ showFilters }) => {
 	const {
 		sortBy,
 		brandFilters,
@@ -47,7 +47,7 @@ const Filters = () => {
 		setFiltersState({ action: { type: "CLEAR_FILTERS" } });
 
 	return (
-		<div class="filters-container">
+		<div class={`filters-container ${showFilters ? "show" : "hide"}`}>
 			<div className="price-sorting-container">
 				<h6>Sort By Price</h6>
 				<div className="sorting-options">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Filters } from "../../components/Filters";
 import { useProducts } from "../../context";
 import { useFilters } from "../../context/filter-context";
@@ -92,6 +92,8 @@ const ProductListing = () => {
 	);
 	const sortedProducts = getSortedProducts(sortBy, productsFilteredBySize);
 
+	const [showFilters, setShowFilters] = useState(false);
+
 	const productsMapping = sortedProducts.map((product) => (
 		<div className="card card-prodcut" key={product._id}>
 			<div className="card-header">
@@ -118,19 +120,37 @@ const ProductListing = () => {
 			</div>
 		</div>
 	));
+
+	const toggleShowFilters = (event) =>
+		setShowFilters((prevShowFilters) => !prevShowFilters);
+
 	return (
 		<section>
 			{productsLoading ? (
 				<h3 className="success-color">Loading Products...</h3>
 			) : (
 				<>
-					<h3>Products</h3>
-					<Filters />
-					{sortedProducts.length ? (
-						<div className="product-mapping">{productsMapping}</div>
-					) : (
-						<h3>No products found</h3>
-					)}
+					<div className="products-grid">
+						<div className="filters-wrapper">
+							<button
+								onClick={toggleShowFilters}
+								className="btn-show-filters"
+							>
+								{showFilters ? "Hide Filters" : "Show Filters"}
+							</button>
+							<Filters showFilters={showFilters} />
+						</div>
+						{sortedProducts.length ? (
+							<div className="products-wrapper">
+								<h3>Products</h3>
+								<div className="product-mapping">
+									{productsMapping}
+								</div>
+							</div>
+						) : (
+							<h3>No products found</h3>
+						)}
+					</div>
 				</>
 			)}
 		</section>
